@@ -4,6 +4,7 @@ from accounts.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from .decorators import *
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
@@ -12,6 +13,7 @@ from django.core.mail import EmailMessage
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.urls import reverse
+from todo.models import *
 
 
 @unauthenticated_user
@@ -110,6 +112,8 @@ def logoutUser(request):
 @login_required(login_url='login')
 @admin_only
 def profile(request):
+    tasks = Task.objects.filter(assigned_to=request.user)
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance =request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance =request.user.profile)
@@ -121,8 +125,8 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance =request.user)
         p_form = ProfileUpdateForm(instance =request.user.profile)
-        print("error")
     context = {
+        'tasks':tasks,
         'u_form': u_form,
         'p_form': p_form
     }
