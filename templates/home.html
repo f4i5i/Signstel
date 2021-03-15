@@ -12,15 +12,17 @@
 		<div class="container">
 			<a class="navbar-brand" href="{% url 'home'%}"><img src="{%static 'images/logo.png'%}" width='173' height='55' /></a>
 			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-				  Dropdown
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Cities
 				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-				  <li><button class="dropdown-item" type="button">Action</button></li>
-				  <li><button class="dropdown-item" type="button">Another action</button></li>
-				  <li><button class="dropdown-item" type="button">Something else here</button></li>
-				</ul>
-			  </div>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">Taxila</a>
+					<a class="dropdown-item" href="#">Wah</a>
+					<a class="dropdown-item" href="#">Kohat</a>
+					<a class="dropdown-item" href="#">Sangla hill</a>
+					<a class="dropdown-item" href="#">Vehari</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 
@@ -83,13 +85,7 @@
 						<a href="#">Signstel</a>.
 			  		</p>
 				</div>
-				<!-- <div class="col-md-4 col-sm-6 col-xs-12">
-					<ul class="social-icons">
-						<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-					</ul>
-				</div> -->
+				<!-- Social Icons -->
 			</div>
 		</div>
 	</footer>
