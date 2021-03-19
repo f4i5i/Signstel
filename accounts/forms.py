@@ -14,6 +14,28 @@ class UserAdminCreationForm(UserCreationForm):
         fields = ['first_name','last_name','phone','email','password1','password2']
 
 
+class ManagerAdminCreationForm(UserCreationForm):
+    """
+    A Custom form for creating new users.
+    """
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name','last_name','phone','email','password1','password2','role','group']
+
+        widgets = {
+            'first_name' : forms.TextInput(attrs={'class': 'form-control form-control-alternative'}),
+            'last_name' : forms.TextInput(attrs={'class': 'form-control form-control-alternative'}),
+            'phone' : forms.TextInput(attrs={'class': 'form-control form-control-alternative'}),
+            'email' : forms.EmailInput(attrs={'class': 'form-control form-control-alternative'}),
+            'password1' : forms.PasswordInput(attrs={'class': 'form-control form-control-alternative'}),
+            'password2' : forms.PasswordInput(attrs={'class': 'form-control form-control-alternative'}),
+            'role' : forms.Select(attrs={'class': 'form-control form-control-alternative'}),
+            'group' : forms.Select(attrs={'class': 'form-control form-control-alternative'}),
+        }
+
+
 class UserUpdateForm(forms.ModelForm):
     
     class Meta:

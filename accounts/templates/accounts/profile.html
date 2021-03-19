@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Profile</h1>
+            <h1>Porfile</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -67,7 +67,7 @@
                     <b>Employee Id</b> <a class="float-right">STT-001</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Role</b> <a class="float-right">IT Manager</a>
+                    <b>Role</b> <a class="float-right">{{user.role}}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Department</b> <a class="float-right">IT</a>
@@ -128,7 +128,8 @@
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#editprofile" data-toggle="tab">Edit Profile</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#adduser" data-toggle="tab">Add User</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -250,7 +251,7 @@
                   </div>
                   <!-- /.tab-pane -->
 
-                  <div class="tab-pane" id="settings">
+                  <div class="tab-pane" id="editprofile">
                     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <fieldset class="form-group">
@@ -332,6 +333,60 @@
                     </form>
                   </div>
                   <!-- /.tab-pane -->
+
+                  <div class="tab-pane" id="adduser">
+                    <form class="form-horizontal" method="POST" action="">
+                      {% csrf_token %}
+                      <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Add New User</legend>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-first-name">First name</label>
+                              {{ new_form.first_name}}
+                            </div>                
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-last-name">Last name</label>
+                                {{ new_form.last_name}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-phone">Phone</label>
+                              {{ new_form.phone}}
+                            </div>                
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-email">Email</label>
+                                {{ new_form.email}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-password">Password</label>
+                              {{ new_form.password1}}
+                            </div>                
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-password2">Confirm Password</label>
+                                {{ new_form.password2}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-control-label" for="input-role">Role</label>
+                              {{ new_form.role}}
+                            </div>
+                            <div class="col-4">
+                              <label class="form-control-label" for="input-group">Group</label>
+                            {{ new_form.group}}
+                          </div>             
+                        </div>
+                      </fieldset>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-lg btn-info">Add</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
                 <!-- /.tab-content -->
                 </div>

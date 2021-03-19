@@ -78,13 +78,16 @@
   text-align: center;
 }
 
-.btn{
+.btn {
   bottom: 100px;
   z-index:9;
-  background-color: #ffc107;
+  background-color: #F89E1E;
   font-family: 'Cambria',' Cochin', Georgia, Times, 'Times New Roman', serif;
   font-size: x-large;
   text-align: center;
+}
+.btn:hover{
+  background-color: #F89E1E;
 }
 .responsive {
   max-width: 100%;
@@ -92,7 +95,7 @@
 }
 .site-footer
 {
-  background-color:#26272b;
+  background-color:#9C2373;
   padding:15px 0 10px;
   font-size:15px;
   line-height:24px;

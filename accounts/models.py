@@ -2,7 +2,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager, UserManage
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from PIL import Image
+from django import forms
 
 
 
@@ -52,6 +54,7 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=200, null=True)
     last_name = models.CharField(max_length=200, null=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
 
     USERNAME_FIELD = 'phone'
     REQUIRED_FIELDS = ['first_name']
